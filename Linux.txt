@@ -1,0 +1,401 @@
+Microsoft Windows [Version 10.0.19044.1288]
+(c) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+C:\Users\User>ssh lena@192.168.0.11
+lena@192.168.0.11's password:
+Welcome to Ubuntu 22.10 (GNU/Linux 5.19.0-38-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+47 обновлений может быть применено немедленно.
+6 из этих обновлений, являются стандартными обновлениями безопасности.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Last login: Wed Apr  5 22:40:06 2023 from 192.168.0.4
+
+--1.
+lena@ubuuntu-lena:~$ cat > 'Домашние животные'
+собаки
+кошки
+хомяки
+^C
+lena@ubuuntu-lena:~$ cat 'Домашние животные'
+собаки
+кошки
+хомяки
+lena@ubuuntu-lena:~$ cat > 'Вьючные животные'
+лошади
+верблюды
+ослы
+^C
+lena@ubuuntu-lena:~$ cat 'Вьючные животные'
+лошади
+верблюды
+ослы
+lena@ubuuntu-lena:~$ cat 'Домашние животные' 'Вьючные животные' > 'Друзья человека'
+lena@ubuuntu-lena:~$ cat 'Друзья человека'
+собаки
+кошки
+хомяки
+лошади
+верблюды
+ослы
+
+--2.
+lena@ubuuntu-lena:~$ mv 'Друзья человека' Животные
+lena@ubuuntu-lena:~$ cd Животные
+lena@ubuuntu-lena:~/Животные$ ls
+'Друзья человека'
+lena@ubuuntu-lena:~/Животные$
+
+--3. Подключение репозитория MySql
+lena@lena-VirtualBox:~$ sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 3A79BD29
+[sudo] пароль для lena: 
+Executing: /tmp/apt-key-gpghome.YOg33UpGbJ/gpg.1.sh --keyserver pgp.mit.edu --recv-keys 3A79BD29
+gpg: ключ 467B942D3A79BD29: импортирован открытый ключ "MySQL Release Engineering <mysql-build@oss.oracle.com>"
+gpg: Всего обработано: 1
+gpg:               импортировано: 1
+lena@lena-VirtualBox:~$ nano /etc/apt/sources.list.d/mysql.list
+lena@lena-VirtualBox:~$ sudo nano /etc/apt/sources.list.d/mysql.list
+lena@lena-VirtualBox:~$ sudo apt-get update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease               
+Пол:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]         
+Пол:5 http://repo.mysql.com/apt/ubuntu bionic InRelease [20,0 kB]                           
+Пол:6 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 Packages [8 532 B]
+Пол:7 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 i386 Packages [8 544 B]
+Получено 151 kB за 1с (139 kB/s)           
+Чтение списков пакетов… Готово
+W: Пропускается получение настроенного файла «connector-python-8.0/binary-amd64/Packages», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/binary-i386/Packages», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/i18n/Translation-ru_RU», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/i18n/Translation-ru», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/i18n/Translation-en», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/dep11/Components-amd64.yml», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/dep11/icons-48x48.tar», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/dep11/icons-64x64.tar», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/dep11/icons-64x64@2.tar», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+W: Пропускается получение настроенного файла «connector-python-8.0/cnf/Commands-amd64», так как в репозитории «http://repo.mysql.com/apt/ubuntu bionic InRelease» отсутствует компонент «connector-python-8.0» (возможно, компонент указан с ошибкой в sources.list?)
+lena@lena-VirtualBox:~$ sudo apt-get install -y mysql-server
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Будут установлены следующие дополнительные пакеты:
+  libaio1 libmecab2 libtinfo5 mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client mysql-common mysql-community-client
+  mysql-community-client-core mysql-community-client-plugins mysql-community-server mysql-community-server-core
+Следующие НОВЫЕ пакеты будут установлены:
+  libaio1 libmecab2 libtinfo5 mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client mysql-community-client
+  mysql-community-client-core mysql-community-client-plugins mysql-community-server mysql-community-server-core mysql-server
+Следующие пакеты будут обновлены:
+  mysql-common
+Обновлено 1 пакетов, установлено 13 новых пакетов, для удаления отмечено 0 пакетов, и 52 пакетов не обновлено.
+Необходимо скачать 43,0 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 358 MB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal/universe amd64 libtinfo5 amd64 6.2-0ubuntu2 [83,0 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 libaio1 amd64 0.3.112-5 [7 184 B] 
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 libmecab2 amd64 0.996-10build1 [233 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 mecab-utils amd64 0.996-10build1 [4 912 B]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 mecab-ipadic all 2.7.0-20070801+main-2.1 [6 714 kB]
+Пол:6 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-common amd64 8.0.32-1ubuntu18.04 [69,3 kB]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 mecab-ipadic-utf8 all 2.7.0-20070801+main-2.1 [4 380 B]
+Пол:8 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-community-client-plugins amd64 8.0.32-1ubuntu18.04 [1 271 kB]
+Пол:9 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-community-client-core amd64 8.0.32-1ubuntu18.04 [1 943 kB]
+Пол:10 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-community-client amd64 8.0.32-1ubuntu18.04 [3 570 kB]
+Пол:11 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-client amd64 8.0.32-1ubuntu18.04 [68,1 kB]
+Пол:12 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-community-server-core amd64 8.0.32-1ubuntu18.04 [28,9 MB]
+Пол:13 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-community-server amd64 8.0.32-1ubuntu18.04 [79,3 kB]
+Пол:14 http://repo.mysql.com/apt/ubuntu bionic/mysql-8.0 amd64 mysql-server amd64 8.0.32-1ubuntu18.04 [68,1 kB]
+Получено 43,0 MB за 6с (7 667 kB/s) 
+Предварительная настройка пакетов …
+(Чтение базы данных … на данный момент установлен 158971 файл и каталог.)
+Подготовка к распаковке …/00-mysql-common_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-common (8.0.32-1ubuntu18.04) на замену (5.8+1.0.5ubuntu2) …
+Выбор ранее не выбранного пакета libtinfo5:amd64.
+Подготовка к распаковке …/01-libtinfo5_6.2-0ubuntu2_amd64.deb …
+Распаковывается libtinfo5:amd64 (6.2-0ubuntu2) …
+Выбор ранее не выбранного пакета mysql-community-client-plugins.
+Подготовка к распаковке …/02-mysql-community-client-plugins_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-community-client-plugins (8.0.32-1ubuntu18.04) …
+Выбор ранее не выбранного пакета mysql-community-client-core.
+Подготовка к распаковке …/03-mysql-community-client-core_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-community-client-core (8.0.32-1ubuntu18.04) …
+Выбор ранее не выбранного пакета mysql-community-client.
+Подготовка к распаковке …/04-mysql-community-client_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-community-client (8.0.32-1ubuntu18.04) …
+Выбор ранее не выбранного пакета mysql-client.
+Подготовка к распаковке …/05-mysql-client_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-client (8.0.32-1ubuntu18.04) …
+Выбор ранее не выбранного пакета libaio1:amd64.
+Подготовка к распаковке …/06-libaio1_0.3.112-5_amd64.deb …
+Распаковывается libaio1:amd64 (0.3.112-5) …
+Выбор ранее не выбранного пакета libmecab2:amd64.
+Подготовка к распаковке …/07-libmecab2_0.996-10build1_amd64.deb …
+Распаковывается libmecab2:amd64 (0.996-10build1) …
+Выбор ранее не выбранного пакета mysql-community-server-core.
+Подготовка к распаковке …/08-mysql-community-server-core_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-community-server-core (8.0.32-1ubuntu18.04) …
+Выбор ранее не выбранного пакета mysql-community-server.
+Подготовка к распаковке …/09-mysql-community-server_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-community-server (8.0.32-1ubuntu18.04) …
+Выбор ранее не выбранного пакета mecab-utils.
+Подготовка к распаковке …/10-mecab-utils_0.996-10build1_amd64.deb …
+Распаковывается mecab-utils (0.996-10build1) …
+Выбор ранее не выбранного пакета mecab-ipadic.
+Подготовка к распаковке …/11-mecab-ipadic_2.7.0-20070801+main-2.1_all.deb …
+Распаковывается mecab-ipadic (2.7.0-20070801+main-2.1) …
+Выбор ранее не выбранного пакета mecab-ipadic-utf8.
+Подготовка к распаковке …/12-mecab-ipadic-utf8_2.7.0-20070801+main-2.1_all.deb …
+Распаковывается mecab-ipadic-utf8 (2.7.0-20070801+main-2.1) …
+Выбор ранее не выбранного пакета mysql-server.
+Подготовка к распаковке …/13-mysql-server_8.0.32-1ubuntu18.04_amd64.deb …
+Распаковывается mysql-server (8.0.32-1ubuntu18.04) …
+Настраивается пакет libmecab2:amd64 (0.996-10build1) …
+Настраивается пакет mysql-common (8.0.32-1ubuntu18.04) …
+Устанавливается новая версия файла настройки /etc/mysql/conf.d/mysql.cnf …
+Устанавливается новая версия файла настройки /etc/mysql/my.cnf.fallback …
+Настраивается пакет mecab-utils (0.996-10build1) …
+Настраивается пакет mysql-community-client-plugins (8.0.32-1ubuntu18.04) …
+Настраивается пакет libaio1:amd64 (0.3.112-5) …
+Настраивается пакет libtinfo5:amd64 (6.2-0ubuntu2) …
+Настраивается пакет mecab-ipadic (2.7.0-20070801+main-2.1) …
+Compiling IPA dictionary for Mecab.  This takes long time...
+reading /usr/share/mecab/dic/ipadic/unk.def ... 40
+emitting double-array: 100% |###########################################| 
+/usr/share/mecab/dic/ipadic/model.def is not found. skipped.
+reading /usr/share/mecab/dic/ipadic/Prefix.csv ... 221
+reading /usr/share/mecab/dic/ipadic/Noun.number.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Postp.csv ... 146
+reading /usr/share/mecab/dic/ipadic/Noun.place.csv ... 72999
+reading /usr/share/mecab/dic/ipadic/Adj.csv ... 27210
+reading /usr/share/mecab/dic/ipadic/Noun.proper.csv ... 27328
+reading /usr/share/mecab/dic/ipadic/Noun.verbal.csv ... 12146
+reading /usr/share/mecab/dic/ipadic/Noun.org.csv ... 16668
+reading /usr/share/mecab/dic/ipadic/Others.csv ... 2
+reading /usr/share/mecab/dic/ipadic/Noun.name.csv ... 34202
+reading /usr/share/mecab/dic/ipadic/Noun.adverbal.csv ... 795
+reading /usr/share/mecab/dic/ipadic/Noun.nai.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Auxil.csv ... 199
+reading /usr/share/mecab/dic/ipadic/Suffix.csv ... 1393
+reading /usr/share/mecab/dic/ipadic/Noun.csv ... 60477
+reading /usr/share/mecab/dic/ipadic/Adnominal.csv ... 135
+reading /usr/share/mecab/dic/ipadic/Verb.csv ... 130750
+reading /usr/share/mecab/dic/ipadic/Postp-col.csv ... 91
+reading /usr/share/mecab/dic/ipadic/Noun.demonst.csv ... 120
+reading /usr/share/mecab/dic/ipadic/Adverb.csv ... 3032
+reading /usr/share/mecab/dic/ipadic/Noun.adjv.csv ... 3328
+reading /usr/share/mecab/dic/ipadic/Symbol.csv ... 208
+reading /usr/share/mecab/dic/ipadic/Noun.others.csv ... 151
+reading /usr/share/mecab/dic/ipadic/Filler.csv ... 19
+reading /usr/share/mecab/dic/ipadic/Interjection.csv ... 252
+reading /usr/share/mecab/dic/ipadic/Conjunction.csv ... 171
+emitting double-array: 100% |###########################################| 
+reading /usr/share/mecab/dic/ipadic/matrix.def ... 1316x1316
+emitting matrix      : 100% |###########################################| 
+
+done!
+update-alternatives: используется /var/lib/mecab/dic/ipadic для предоставления /var/lib/mecab/dic/debian (mecab-dictionary) в автоматическом режиме
+Настраивается пакет mysql-community-client-core (8.0.32-1ubuntu18.04) …
+Настраивается пакет mysql-community-server-core (8.0.32-1ubuntu18.04) …
+Настраивается пакет mecab-ipadic-utf8 (2.7.0-20070801+main-2.1) …
+Compiling IPA dictionary for Mecab.  This takes long time...
+reading /usr/share/mecab/dic/ipadic/unk.def ... 40
+emitting double-array: 100% |###########################################| 
+/usr/share/mecab/dic/ipadic/model.def is not found. skipped.
+reading /usr/share/mecab/dic/ipadic/Prefix.csv ... 221
+reading /usr/share/mecab/dic/ipadic/Noun.number.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Postp.csv ... 146
+reading /usr/share/mecab/dic/ipadic/Noun.place.csv ... 72999
+reading /usr/share/mecab/dic/ipadic/Adj.csv ... 27210
+reading /usr/share/mecab/dic/ipadic/Noun.proper.csv ... 27328
+reading /usr/share/mecab/dic/ipadic/Noun.verbal.csv ... 12146
+reading /usr/share/mecab/dic/ipadic/Noun.org.csv ... 16668
+reading /usr/share/mecab/dic/ipadic/Others.csv ... 2
+reading /usr/share/mecab/dic/ipadic/Noun.name.csv ... 34202
+reading /usr/share/mecab/dic/ipadic/Noun.adverbal.csv ... 795
+reading /usr/share/mecab/dic/ipadic/Noun.nai.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Auxil.csv ... 199
+reading /usr/share/mecab/dic/ipadic/Suffix.csv ... 1393
+reading /usr/share/mecab/dic/ipadic/Noun.csv ... 60477
+reading /usr/share/mecab/dic/ipadic/Adnominal.csv ... 135
+reading /usr/share/mecab/dic/ipadic/Verb.csv ... 130750
+reading /usr/share/mecab/dic/ipadic/Postp-col.csv ... 91
+reading /usr/share/mecab/dic/ipadic/Noun.demonst.csv ... 120
+reading /usr/share/mecab/dic/ipadic/Adverb.csv ... 3032
+reading /usr/share/mecab/dic/ipadic/Noun.adjv.csv ... 3328
+reading /usr/share/mecab/dic/ipadic/Symbol.csv ... 208
+reading /usr/share/mecab/dic/ipadic/Noun.others.csv ... 151
+reading /usr/share/mecab/dic/ipadic/Filler.csv ... 19
+reading /usr/share/mecab/dic/ipadic/Interjection.csv ... 252
+reading /usr/share/mecab/dic/ipadic/Conjunction.csv ... 171
+emitting double-array: 100% |###########################################| 
+reading /usr/share/mecab/dic/ipadic/matrix.def ... 1316x1316
+emitting matrix      : 100% |###########################################| 
+
+done!
+update-alternatives: используется /var/lib/mecab/dic/ipadic-utf8 для предоставления /var/lib/mecab/dic/debian (mecab-dictionary) в автоматическом режиме
+Настраивается пакет mysql-community-client (8.0.32-1ubuntu18.04) …
+Настраивается пакет mysql-client (8.0.32-1ubuntu18.04) …
+Настраивается пакет mysql-community-server (8.0.32-1ubuntu18.04) …
+update-alternatives: используется /etc/mysql/mysql.cnf для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib/systemd/system/mysql.service.
+Настраивается пакет mysql-server (8.0.32-1ubuntu18.04) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+Обрабатываются триггеры для libc-bin (2.31-0ubuntu9.9) …
+
+lena@lena-VirtualBox:~$ sudo mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Enter password for user root: 
+
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No: y
+
+There are three levels of password validation policy:
+
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0    
+Using existing password for root.
+
+Estimated strength of the password: 100 
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : y  
+
+New password: 
+
+Re-enter new password: 
+
+Estimated strength of the password: 100 
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y 
+Success.
+
+All done! 
+lena@lena-VirtualBox:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE USER 'lena'@'%' IDENTIFIED BY 'Lumia_920';
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'lena'@'%';
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0,01 sec)
+
+4.Установить и удалить deb-пакет с помощью dpkg
+lena@lena-VirtualBox:~$ wget https://ubuntu.pkgs.org/22.04/nginx-amd64/nginx-module-geoip_1.20.2-1~jammy_amd64.deb.html
+--2023-04-12 23:04:17--  https://ubuntu.pkgs.org/22.04/nginx-amd64/nginx-module-geoip_1.20.2-1~jammy_amd64.deb.html
+Распознаётся ubuntu.pkgs.org (ubuntu.pkgs.org)… 46.4.72.43
+Подключение к ubuntu.pkgs.org (ubuntu.pkgs.org)|46.4.72.43|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 403 Forbidden
+2023-04-12 23:04:17 ОШИБКА 403: Forbidden.
+
+lena@lena-VirtualBox:~$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+--2023-04-12 23:06:31--  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+Распознаётся dl.google.com (dl.google.com)… 64.233.161.190, 64.233.161.91, 64.233.161.136, ...
+Подключение к dl.google.com (dl.google.com)|64.233.161.190|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 93762720 (89M) [application/x-debian-package]
+Сохранение в: «google-chrome-stable_current_amd64.deb»
+
+google-chrome-stable_current_ 100%[=================================================>]  89,42M  15,5MB/s    за 5,9s
+
+2023-04-12 23:06:37 (15,1 MB/s) - «google-chrome-stable_current_amd64.deb» сохранён [93762720/93762720]
+
+lena@lena-VirtualBox:~$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+Выбор ранее не выбранного пакета google-chrome-stable.
+(Чтение базы данных … на данный момент установлено 162211 файлов и каталогов.)
+Подготовка к распаковке google-chrome-stable_current_amd64.deb …
+Распаковывается google-chrome-stable (112.0.5615.49-1) …
+Настраивается пакет google-chrome-stable (112.0.5615.49-1) …
+update-alternatives: используется /usr/bin/google-chrome-stable для предоставления /usr/bin/x-www-browser (x-www-browser) в автоматическом режиме
+update-alternatives: используется /usr/bin/google-chrome-stable для предоставления /usr/bin/gnome-www-browser (gnome-www-browser) в автоматическом режиме
+update-alternatives: используется /usr/bin/google-chrome-stable для предоставления /usr/bin/google-chrome (google-chrome) в автоматическом режиме
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu1) …
+Обрабатываются триггеры для desktop-file-utils (0.24-1ubuntu3) …
+Обрабатываются триггеры для mime-support (3.64ubuntu1) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+lena@lena-VirtualBox:~$ sudo dpkg -l google-chrome-stable
+Желаемый=неизвестно[u]/установить[i]/удалить[r]/вычистить[p]/зафиксировать[h]
+| Состояние=не[n]/установлен[i]/настроен[c]/распакован[U]/частично настроен[F]/
+            частично установлен[H]/trig-aWait/Trig-pend
+|/ Ошибка?=(нет)/требуется переустановка[R] (верхний регистр
+в полях состояния и ошибки указывает на ненормальную ситуацию)
+||/ Имя                  Версия          Архитектура  Описание
++++-====================-===============-============-=================================
+ii  google-chrome-stable 112.0.5615.49-1 amd64        The web browser from Google
+lena@lena-VirtualBox:~$ sudo dpkg -r google-chrome-stable
+(Чтение базы данных … на данный момент установлено 162325 файлов и каталогов.)
+Удаляется google-chrome-stable (112.0.5615.49-1) …
+update-alternatives: используется /usr/bin/firefox для предоставления /usr/bin/x-www-browser (x-www-browser) в автоматическом режиме
+update-alternatives: используется /usr/bin/firefox для предоставления /usr/bin/gnome-www-browser (gnome-www-browser) в автоматическом режиме
+Обрабатываются триггеры для man-db (2.9.1-1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu1) …
+Обрабатываются триггеры для desktop-file-utils (0.24-1ubuntu3) …
+Обрабатываются триггеры для mime-support (3.64ubuntu1) …
+lena@lena-VirtualBox:~$ sudo dpkg -l google-chrome-stable
+Желаемый=неизвестно[u]/установить[i]/удалить[r]/вычистить[p]/зафиксировать[h]
+| Состояние=не[n]/установлен[i]/настроен[c]/распакован[U]/частично настроен[F]/
+            частично установлен[H]/trig-aWait/Trig-pend
+|/ Ошибка?=(нет)/требуется переустановка[R] (верхний регистр
+в полях состояния и ошибки указывает на ненормальную ситуацию)
+||/ Имя                  Версия          Архитектура  Описание
++++-====================-===============-============-=================================
+rc  google-chrome-stable 112.0.5615.49-1 amd64        The web browser from Google
+lena@lena-VirtualBox:~$
+
